@@ -1,0 +1,46 @@
+env:
+  MANIFEST: https://github.com/crdroidandroid/android.git
+  MANIFEST_BRANCH: 13.0
+  DEVICE: spes
+  OEM: xiaomi
+  DT_LINK: https://github.com/sakshiagrwal/android_device_xiaomi_spes.git -b jb13.0
+  DT_PATH: device/$OEM/$DEVICE
+  VT_LINK: https://github.com/sakshiagrwal/android_vendor_xiaomi_spes.git -b jb13.0
+  VT_PATH: vendor/$OEM/$DEVICE
+  KT_LINK: https://github.com/sakshiagrwal/android_kernel_xiaomi_spes.git -b jb13.0
+  KT_PATH: kernel/$OEM/$DEVICE
+  LUNCH_COMBO: lineage_spes-user
+  TARGET: bacon
+  OUTPUT: crDroidAndroid*.zip
+
+  # Not Recommended to Change
+  SYNC_PATH: $HOME/work # Do NOT use "~". Use $HOME instead.
+  CCACHE_SIZE: 30G
+  CCACHE_DIR: $HOME/work/.ccache
+  J_VAL: 16
+
+  # Cirrus Specific Vars (Do *NOT* Change)
+  CIRRUS_SHELL: bash
+
+task:
+  name: "crDroid Build"
+  timeout_in: 2h
+  container:
+    image: apon77/aosp:cirrus
+    cpu: 8
+    memory: 32G
+
+  Storage_Checker:
+    - df -h
+    - lsblk
+    - ls -l -a -h
+
+  Sync_script:
+    - bash sync.sh
+
+  Build_script:
+    - bash build.sh
+
+  Upload_script:
+    - export TIMEOUT=43200 # Download Link Timeout (in Minutes)
+    - bash upload.sh
