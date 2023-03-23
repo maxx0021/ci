@@ -1,7 +1,7 @@
 env:
   MANIFEST: https://github.com/AlphaDroid-Project/manifest.git
-  MANIFEST_BRANCH: 13.0
-  DEVICE: spes
+  MANIFEST_BRANCH: alpha-13
+  DEVICE: rova
   OEM: xiaomi
   DT_LINK: https://github.com/Maxx12211/android_device_xiaomi_rova.git -b 13.0-alphadroid
   DT_PATH: device/$OEM/$DEVICE
