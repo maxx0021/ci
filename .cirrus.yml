@@ -1,17 +1,17 @@
 env:
-  MANIFEST: https://github.com/crdroidandroid/android.git
+  MANIFEST: https://github.com/AlphaDroid-Project/manifest.git
   MANIFEST_BRANCH: 13.0
   DEVICE: spes
   OEM: xiaomi
-  DT_LINK: https://github.com/sakshiagrwal/android_device_xiaomi_spes.git -b jb13.0
+  DT_LINK: https://github.com/Maxx12211/android_device_xiaomi_rova.git -b 13.0-alphadroid
   DT_PATH: device/$OEM/$DEVICE
-  VT_LINK: https://github.com/sakshiagrwal/android_vendor_xiaomi_spes.git -b jb13.0
+  VT_LINK: https://github.com/Maxx12211/android_vendor_xiaomi_rova.git -b 13
   VT_PATH: vendor/$OEM/$DEVICE
-  KT_LINK: https://github.com/sakshiagrwal/android_kernel_xiaomi_spes.git -b jb13.0
+  KT_LINK: https://github.com/Maxx12211/android_kernel_xiaomi_rova.git -b 13.0
   KT_PATH: kernel/$OEM/$DEVICE
-  LUNCH_COMBO: lineage_spes-user
+  LUNCH_COMBO: lineage_rova-user
   TARGET: bacon
-  OUTPUT: crDroidAndroid*.zip
+  OUTPUT: AlphaDroid*.zip
 
   # Not Recommended to Change
   SYNC_PATH: $HOME/work # Do NOT use "~". Use $HOME instead.
@@ -23,7 +23,7 @@ env:
   CIRRUS_SHELL: bash
 
 task:
-  name: "crDroid Build"
+  name: "AlphaDroid Build"
   timeout_in: 2h
   container:
     image: apon77/aosp:cirrus
